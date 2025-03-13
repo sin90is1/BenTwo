@@ -72,3 +72,4 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+Content/Game/VRTemplate/Maps/VRTemplateMap2_BuiltData.T3D
