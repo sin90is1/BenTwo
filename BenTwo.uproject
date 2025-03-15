@@ -30,6 +30,14 @@
 				"Win64",
 				"Android"
 			]
+		},
+		{
+			"Name": "OculusInteraction",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"Android"
+			]
 		}
 	],
 	"TargetPlatforms": [
