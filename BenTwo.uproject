@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "5.4",
+	"EngineAssociation": "5.5",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -29,7 +29,8 @@
 			"SupportedTargetPlatforms": [
 				"Win64",
 				"Android"
-			]
+			],
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/7ce814580ba341b4bb5865983fea9d31"
 		},
 		{
 			"Name": "OculusInteraction",
@@ -37,7 +38,8 @@
 			"SupportedTargetPlatforms": [
 				"Win64",
 				"Android"
-			]
+			],
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/2372b714e0aa46ab85168aaf035e099a"
 		}
 	],
 	"TargetPlatforms": [
