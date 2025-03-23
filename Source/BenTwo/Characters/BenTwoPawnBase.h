@@ -26,4 +26,21 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+protected:
+    // Reference to the Omnitrix class (set in Blueprint)
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Omnitrix")
+    TSubclassOf<AOmnitrix> OmnitrixClass;
+
+    // Function to spawn the Omnitrix
+    UFUNCTION(BlueprintCallable, Category = "Omnitrix")
+    void SpawnOmnitrix(USceneComponent* AttachToComponent);
+
+    // Function to get the Omnitrix instance
+    UFUNCTION(BlueprintCallable, Category = "Omnitrix")
+    class AOmnitrix* GetOmnitrixInstance() const;
+
+private:
+    // Reference to the spawned Omnitrix instance (private)
+    TObjectPtr<AOmnitrix> OmnitrixInstance;
+
 };

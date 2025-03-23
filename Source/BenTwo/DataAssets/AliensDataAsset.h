@@ -14,14 +14,14 @@ struct FAliens
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
     FString Name;
 
-//     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-//     USoundBase* Sound;
-// 
-//     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-//     UTexture2D* Image;
-// 
-//     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-//     TArray<FString> Abilities;
+    // Static mesh for the alien's hologram
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Alien")
+    UStaticMesh* AlienHologram;
+
+    // Material for the alien's hologram
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Alien")
+    UMaterialInterface* AlienMaterial;
+
 };
 
 /**

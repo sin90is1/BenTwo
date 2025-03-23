@@ -32,7 +32,7 @@ void AOmnitrix::UpdateChosenAlien(float YAxisRotation)
     if (NumberOfAliens == 0)
     {
         // Log a warning if there are no aliens
-        GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("No aliens found in AliensData!"));
+        //GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("No aliens found in AliensData!"));
         return;
     }
 
@@ -40,19 +40,19 @@ void AOmnitrix::UpdateChosenAlien(float YAxisRotation)
     float NormalizedRotation = FMath::Fmod(YAxisRotation + 360.0f, 360.0f);
 
     // Log the normalized rotation for debugging
-    GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, FString::Printf(TEXT("Normalized Rotation: %f"), NormalizedRotation));
+    //GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, FString::Printf(TEXT("Normalized Rotation: %f"), NormalizedRotation));
 
     // Determine the segment index
     int32 SegmentIndex = FMath::FloorToInt(NormalizedRotation / SegmentSize);
 
     // Log the segment index for debugging
-    GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Cyan, FString::Printf(TEXT("Segment Index: %d"), SegmentIndex));
+    //GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Cyan, FString::Printf(TEXT("Segment Index: %d"), SegmentIndex));
 
     // Clamp the index to ensure it's within bounds
     SegmentIndex = FMath::Clamp(SegmentIndex, 0, NumberOfAliens - 1);
 
     // Log the clamped segment index for debugging
-    GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT("Clamped Segment Index: %d"), SegmentIndex));
+    //GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, FString::Printf(TEXT("Clamped Segment Index: %d"), SegmentIndex));
 
     // Get the new alien
     FAliens NewAlien = AliensData->Aliens[SegmentIndex];

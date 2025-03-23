@@ -2,6 +2,7 @@
 
 
 #include "Characters/BenTwoPawnBase.h"
+#include "VRActors/Omnitrix.h"
 
 // Sets default values
 ABenTwoPawnBase::ABenTwoPawnBase()
@@ -30,5 +31,52 @@ void ABenTwoPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void ABenTwoPawnBase::SpawnOmnitrix(USceneComponent* AttachToComponent)
+{
+    if (OmnitrixClass && AttachToComponent)
+    {
+        // Spawn the Omnitrix actor
+        FActorSpawnParameters SpawnParams;
+        SpawnParams.Owner = this;
+        SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+        OmnitrixInstance = GetWorld()->SpawnActor<AOmnitrix>(OmnitrixClass, SpawnParams);
+
+        if (OmnitrixInstance)
+        {
+            // Attach the Omnitrix to the specified scene component
+            OmnitrixInstance->AttachToComponent(AttachToComponent, FAttachmentTransformRules::SnapToTargetIncludingScale);
+
+            // Set the Omnitrix's relative location/rotation (if needed)
+            OmnitrixInstance->SetActorRelativeLocation(FVector::ZeroVector);
+            OmnitrixInstance->SetActorRelativeRotation(FRotator::ZeroRotator);
+
+            UE_LOG(LogTemp, Warning, TEXT("Omnitrix spawned and attached!"));
+        }
+        else
+        {
+            UE_LOG(LogTemp, Error, TEXT("Failed to spawn Omnitrix!"));
+        }
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Invalid Omnitrix class or attach component!"));
+    }
+}
+
+class AOmnitrix* ABenTwoPawnBase::GetOmnitrixInstance() const
+{
+    // Ensure the instance is valid before returning it
+    if (IsValid(OmnitrixInstance))
+    {
+        return OmnitrixInstance;
+    }
+    else
+    {
+        UE_LOG(LogTemp, Warning, TEXT("OmnitrixInstance is not valid!"));
+        return nullptr;
+    }
 }
 
