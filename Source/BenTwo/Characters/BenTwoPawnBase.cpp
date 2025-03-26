@@ -2,7 +2,9 @@
 
 
 #include "Characters/BenTwoPawnBase.h"
-#include "VRActors/Omnitrix.h"
+
+#include "AbilitySystem/Component/BenAbilitySystemComponentBase.h"
+#include "AbilitySystem/AttributeSets/BenAttributeSetBase.h"
 
 // Sets default values
 ABenTwoPawnBase::ABenTwoPawnBase()
@@ -10,6 +12,11 @@ ABenTwoPawnBase::ABenTwoPawnBase()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+    AbilitySystemComponent = CreateDefaultSubobject<UBenAbilitySystemComponentBase>("AbilitySystemComponent");
+    AbilitySystemComponent->SetIsReplicated(false);
+    AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Full);
+
+    AttributeSet = CreateDefaultSubobject<UBenAttributeSetBase>("AttributeSetBase");
 }
 
 // Called when the game starts or when spawned
@@ -17,6 +24,13 @@ void ABenTwoPawnBase::BeginPlay()
 {
 	Super::BeginPlay();
 	
+}
+
+void ABenTwoPawnBase::PossessedBy(AController* NewController)
+{
+    Super::PossessedBy(NewController);
+    InitAbilityActorInfo();
+
 }
 
 // Called every frame
@@ -33,50 +47,51 @@ void ABenTwoPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 
 }
 
-void ABenTwoPawnBase::SpawnOmnitrix(USceneComponent* AttachToComponent)
+AActor* ABenTwoPawnBase::SpawnObjectAndAttach(USceneComponent* AttachToComponent, TSubclassOf<AActor> ActorClass)
 {
-    if (OmnitrixClass && AttachToComponent)
+    if (ActorClass && AttachToComponent)
     {
-        // Spawn the Omnitrix actor
+        // Spawn the actor
         FActorSpawnParameters SpawnParams;
         SpawnParams.Owner = this;
         SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-        OmnitrixInstance = GetWorld()->SpawnActor<AOmnitrix>(OmnitrixClass, SpawnParams);
+        AActor* SpawnedActor = GetWorld()->SpawnActor<AActor>(ActorClass, FTransform::Identity, SpawnParams);
 
-        if (OmnitrixInstance)
+        if (SpawnedActor)
         {
-            // Attach the Omnitrix to the specified scene component
-            OmnitrixInstance->AttachToComponent(AttachToComponent, FAttachmentTransformRules::SnapToTargetIncludingScale);
+            // Attach the actor to the specified scene component
+            SpawnedActor->AttachToComponent(AttachToComponent, FAttachmentTransformRules::SnapToTargetIncludingScale);
 
-            // Set the Omnitrix's relative location/rotation (if needed)
-            OmnitrixInstance->SetActorRelativeLocation(FVector::ZeroVector);
-            OmnitrixInstance->SetActorRelativeRotation(FRotator::ZeroRotator);
+            // Set the spawned actor's relative location/rotation
+            SpawnedActor->SetActorRelativeLocation(FVector::ZeroVector);
+            SpawnedActor->SetActorRelativeRotation(FRotator::ZeroRotator);
 
-            UE_LOG(LogTemp, Warning, TEXT("Omnitrix spawned and attached!"));
+            UE_LOG(LogTemp, Warning, TEXT("Actor spawned and attached successfully!"));
+
+            return SpawnedActor;
         }
         else
         {
-            UE_LOG(LogTemp, Error, TEXT("Failed to spawn Omnitrix!"));
+            UE_LOG(LogTemp, Error, TEXT("Failed to spawn actor!"));
         }
     }
     else
     {
-        UE_LOG(LogTemp, Error, TEXT("Invalid Omnitrix class or attach component!"));
+        UE_LOG(LogTemp, Error, TEXT("Invalid actor class or attach component!"));
     }
+
+    return nullptr;
 }
 
-class AOmnitrix* ABenTwoPawnBase::GetOmnitrixInstance() const
+UAbilitySystemComponent* ABenTwoPawnBase::GetAbilitySystemComponent() const
 {
-    // Ensure the instance is valid before returning it
-    if (IsValid(OmnitrixInstance))
-    {
-        return OmnitrixInstance;
-    }
-    else
-    {
-        UE_LOG(LogTemp, Warning, TEXT("OmnitrixInstance is not valid!"));
-        return nullptr;
-    }
+    return AbilitySystemComponent;
+}
+
+void ABenTwoPawnBase::InitAbilityActorInfo()
+{
+    AbilitySystemComponent->InitAbilityActorInfo(this, this);
+   /* Cast<UBenAbilitySystemComponentBase>(AbilitySystemComponent)->AbilityActorInfoSet();*/
 }
 

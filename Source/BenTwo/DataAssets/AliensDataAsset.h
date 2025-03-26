@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
+#include "GameplayTagContainer.h"
 #include "AliensDataAsset.generated.h"
+
 
 USTRUCT(BlueprintType)
 struct FAliens
@@ -14,13 +16,16 @@ struct FAliens
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
     FString Name;
 
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+    FGameplayTag AlienTag;
+
     // Static mesh for the alien's hologram
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Alien")
     UStaticMesh* AlienHologram;
 
     // Material for the alien's hologram
-    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Alien")
-    UMaterialInterface* AlienMaterial;
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+    UMaterialInterface* HologramMaterial;
 
 };
 

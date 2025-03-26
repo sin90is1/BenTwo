@@ -79,6 +79,14 @@ void AOmnitrix::UpdateChosenAlien(float YAxisRotation)
     }
 }
 
+// FAliens AOmnitrix::GetChoosenAlien(bool AlienIsChoosen)
+// {
+//     if (AlienIsChoosen)
+//     {
+//         return ChoosenAlien;
+//     }
+// }
+
 void AOmnitrix::InitializeCachedData()
 {
     if (AliensData)
@@ -94,4 +102,3 @@ void AOmnitrix::InitializeCachedData()
     // Debug log for NumberOfAliens (int32) and SegmentSize (float)
     UE_LOG(LogTemp, Warning, TEXT("NumberOfAliens: %d --- SegmentSize: %f"), NumberOfAliens, SegmentSize);
 }
-

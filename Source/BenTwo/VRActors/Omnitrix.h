@@ -8,8 +8,9 @@
 #include "Omnitrix.generated.h"
 
 
+struct FAliens;
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAlienChangedSignature, const FAliens&, NewAlien);
-/*DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAlienTransform, const FAliens&, TransformAlien);*/
 
 UCLASS()
 class BENTWO_API AOmnitrix : public AActor

@@ -3,11 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AbilitySystemInterface.h"
 #include "GameFramework/Pawn.h"
 #include "BenTwoPawnBase.generated.h"
 
+
+class UAbilitySystemComponent;
+class UAttributeSet;
+
 UCLASS()
-class BENTWO_API ABenTwoPawnBase : public APawn
+class BENTWO_API ABenTwoPawnBase : public APawn , public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
@@ -20,27 +25,30 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+
+	virtual void PossessedBy(AController* NewController) override;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UFUNCTION(BlueprintCallable, Category = "Omnitrix")
+	AActor* SpawnObjectAndAttach(USceneComponent* AttachToComponent, TSubclassOf<AActor> ActorClass);
+
+
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+
+	UAttributeSet* GetUAttributeSet() const { return AttributeSet; }
+
 protected:
-    // Reference to the Omnitrix class (set in Blueprint)
-    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Omnitrix")
-    TSubclassOf<AOmnitrix> OmnitrixClass;
 
-    // Function to spawn the Omnitrix
-    UFUNCTION(BlueprintCallable, Category = "Omnitrix")
-    void SpawnOmnitrix(USceneComponent* AttachToComponent);
+	UPROPERTY(BlueprintReadOnly)
+	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
 
-    // Function to get the Omnitrix instance
-    UFUNCTION(BlueprintCallable, Category = "Omnitrix")
-    class AOmnitrix* GetOmnitrixInstance() const;
+	UPROPERTY()
+	TObjectPtr<UAttributeSet> AttributeSet;
 
-private:
-    // Reference to the spawned Omnitrix instance (private)
-    TObjectPtr<AOmnitrix> OmnitrixInstance;
-
+	void InitAbilityActorInfo();
 };
