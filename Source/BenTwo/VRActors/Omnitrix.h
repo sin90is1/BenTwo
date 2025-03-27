@@ -12,6 +12,8 @@ struct FAliens;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAlienChangedSignature, const FAliens&, NewAlien);
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAlienConfirmedSignature, const FAliens&, ConfirmedAlien);
+
 UCLASS()
 class BENTWO_API AOmnitrix : public AActor
 {
@@ -35,15 +37,21 @@ public:
 
     // Currently chosen alien
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Omnitrix")
-    FAliens ChoosenAlien;
+    FAliens CurrentAlien;
 
     // Multicast delegate for when the chosen alien changes
     UPROPERTY(BlueprintAssignable, Category = "Omnitrix")
     FOnAlienChangedSignature OnAlienChanged;
 
+    UPROPERTY(BlueprintAssignable)
+    FOnAlienConfirmedSignature OnAlienConfirmed;
+
     // Function to update the chosen alien based on rotation
     UFUNCTION(BlueprintCallable, Category = "Omnitrix")
     void UpdateChosenAlien(float YAxisRotation);
+
+    UFUNCTION(BlueprintCallable)
+    void ConfirmAlienSelection();
 
 private:
     // Cached segment size

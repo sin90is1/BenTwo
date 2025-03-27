@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
 #include "GameplayTagContainer.h"
+#include "Abilities/GameplayAbility.h"
 #include "AliensDataAsset.generated.h"
 
 
@@ -25,7 +26,10 @@ struct FAliens
 
     // Material for the alien's hologram
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-    UMaterialInterface* HologramMaterial;
+    UMaterialInterface* HandMaterial;
+
+   UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+    TArray<TSubclassOf<UGameplayAbility>> Abilities;
 
 };
 
