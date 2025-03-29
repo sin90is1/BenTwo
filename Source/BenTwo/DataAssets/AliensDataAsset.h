@@ -28,8 +28,9 @@ struct FAliens
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
     UMaterialInterface* HandMaterial;
 
-   UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-    TArray<TSubclassOf<UGameplayAbility>> Abilities;
+    // Maps pose names (e.g., "Fist") to ability classes
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+    TMap<FString, TSubclassOf<UGameplayAbility>> PoseAbilities;
 
 };
 

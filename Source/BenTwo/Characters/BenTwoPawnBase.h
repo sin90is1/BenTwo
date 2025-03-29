@@ -42,6 +42,7 @@ public:
 
 	UAttributeSet* GetUAttributeSet() const { return AttributeSet; }
 
+
 protected:
 
 	UPROPERTY(BlueprintReadOnly)

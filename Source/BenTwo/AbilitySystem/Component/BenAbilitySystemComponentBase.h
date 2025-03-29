@@ -16,7 +16,7 @@ class BENTWO_API UBenAbilitySystemComponentBase : public UAbilitySystemComponent
 	
 public:
 
-	UFUNCTION(BlueprintCallable, Category = "BenASC")
-	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& StartupAbilities);
+// 	UFUNCTION(BlueprintCallable, Category = "BenASC")
+// 	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& StartupAbilities);
 
 };

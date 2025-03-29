@@ -15,6 +15,6 @@ class BENTWO_API UBenGameplayAbilityBase : public UGameplayAbility
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY(EditDefaultsOnly, Category="Gesture")
-	FGameplayTag GestureTag;
+// 	UPROPERTY(EditDefaultsOnly, Category="Gesture")
+// 	FGameplayTag GestureTag;
 };
