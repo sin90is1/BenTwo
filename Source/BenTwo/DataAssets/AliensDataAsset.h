@@ -42,7 +42,10 @@ class BENTWO_API UAliensDataAsset : public UDataAsset
 {
 	GENERATED_BODY()
 	
-    public:
+public:
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
     TArray<FAliens> Aliens;
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+    FAliens Ben;
 };

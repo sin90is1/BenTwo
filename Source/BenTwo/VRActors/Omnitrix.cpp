@@ -72,6 +72,11 @@ void AOmnitrix::ConfirmAlienSelection()
     OnAlienConfirmed.Broadcast(CurrentAlien);
 }
 
+void AOmnitrix::ChangeToAnAlien(const FAliens& NewAlien)
+{
+    CurrentAlien = NewAlien;
+}
+
 void AOmnitrix::InitializeCachedData()
 {
     if (AliensData)

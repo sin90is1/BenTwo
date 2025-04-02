@@ -7,8 +7,21 @@
 
 void ABenPawn::GrantAlienAbilities(const FAliens& NewAlien)
 {
+    // 1. Check if AbilitySystemComponent is valid
+    if (!AbilitySystemComponent)
+    {
+        UE_LOG(LogTemp, Error, TEXT("AbilitySystemComponent is null!"));
+        return;
+    }
+
     // Clear old abilities
     AbilitySystemComponent->ClearAllAbilities();
+
+    if (NewAlien.PoseAbilities.Num() == 0)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("No abilities defined for alien: %s"), *NewAlien.Name);
+        return;
+    }
 
     // Grant new abilities from the map
     for (const auto& Pair : NewAlien.PoseAbilities)

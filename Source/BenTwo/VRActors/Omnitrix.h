@@ -53,6 +53,9 @@ public:
     UFUNCTION(BlueprintCallable)
     void ConfirmAlienSelection();
 
+    UFUNCTION(BlueprintCallable)
+    void ChangeToAnAlien(const FAliens& NewAlien);
+
 private:
     // Cached segment size
     float SegmentSize;
