@@ -7,7 +7,7 @@ This project is a mixed reality (MR) prototype for Meta Quest 3 inspired by **Be
 ### 1. Omnitrix Watch System
 
 - Built using **MetaXR Interaction SDK**.
-- Functional watch with two interactive buttons one for activation/deactivation and one for confirming alien to transform.
+- Functional watch with theree interactive buttons one for activation/deactivation, one for confirming alien to transform, one for turning back to human.
 - Rotatable watch face to change alien selected.
 - based on number of aliens in `UAliensDataAsset` it divides circumference of the omnitrix face circle equally.
 
@@ -55,3 +55,15 @@ This project is a mixed reality (MR) prototype for Meta Quest 3 inspired by **Be
 - **MetaXRInteraction v74.0.0**
 - **UnrealMetaXRPlugin v74.0**
 - **OculusHandTools**
+
+---
+## Credits & Contributions
+Special thanks to the creators of the following 3D assets used in this project:
+
+- [Main Omnitrix](https://sketchfab.com/3d-models/omnitrix-6eece96485f6433e9a8edf07da72ee90)  
+- [Omnitrix Spaceship](https://sketchfab.com/3d-models/10-ben-10-all-omnitrix-a8d7182e738f4db69b0b359957a3cd70)  
+- [Omnitrix Badge (used for human transformation)](https://sketchfab.com/3d-models/omnitrix-badge-a02e522eb9cb45bc89b616929b5f2edd)  
+- [Omnitrix Cylinder Part](https://sketchfab.com/3d-models/omnitrix-1e51128e2f154badbd499ee48d23aa68)  
+- [Diamondhead Crystal (used for projectile ability)](https://sketchfab.com/3d-models/large-crystal-237b07e70cf54c4c9f1f89519a7c077d)  
+
+Huge thanks to the amazing artists who shared their work on Sketchfab!
