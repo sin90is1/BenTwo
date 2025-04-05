@@ -57,6 +57,23 @@ This project is a mixed reality (MR) prototype for Meta Quest 3 inspired by **Be
 - **OculusHandTools**
 
 ---
+## GameplayPictures
+![OmnitrixSpaceship](https://github.com/user-attachments/assets/aef72838-fad5-4a46-8b9e-a73478950a23)
+Currently due to collisions and the way of spawning it has bug
+
+![OmnitrixAndAlienSelection](https://github.com/user-attachments/assets/b73db235-46d7-4270-bdd8-ec8121efecad)
+
+![SwitchingBackFromAlienToBen](https://github.com/user-attachments/assets/4f30eb80-6972-436b-8fc7-9f60823e7351)
+
+switching in and back from Aliens and Using Omnitrix (Omnitrix detach from player arm due fixing problem with hand tracking when one hand cover parts or fully of another hands, it's transformation will fall off)
+
+
+![WallsDestruction](https://github.com/user-attachments/assets/5d4b8503-0767-4cec-bc50-7418f0bca81d)
+
+![CrystalProjectile](https://github.com/user-attachments/assets/49e39244-287b-403a-b8ee-5cf44878f9f0)
+
+Using FireBeal and CrystalProjectile for  Heatblast and Diamondhead Alien
+---
 ## Credits & Contributions
 Special thanks to the creators of the following 3D assets used in this project:
 
